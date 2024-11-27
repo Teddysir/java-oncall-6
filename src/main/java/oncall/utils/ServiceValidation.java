@@ -2,9 +2,7 @@ package oncall.utils;
 
 import oncall.constants.ErrorMessageType;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ServiceValidation {
@@ -40,6 +38,36 @@ public class ServiceValidation {
     public static void checkedRawInput(String rawInput) {
         if(rawInput.contains(",,")) {
             throw new IllegalArgumentException(ErrorMessageType.INVALID_STAFF_INPUT_ERROR.getMessage());
+        }
+    }
+
+    public static int checkedStartMonth(String rawMonth) {
+        try {
+            return Integer.parseInt(rawMonth);
+        } catch (IllegalFormatException e) {
+            throw new IllegalArgumentException(ErrorMessageType.INVALID_START_MONTH_FORMAT.getMessage());
+        }
+    }
+
+    public static void checkedStartDay(String rawDay) {
+        List<String> day7 = new ArrayList<>();
+        int count = 0;
+        day7.add("월");
+        day7.add("화");
+        day7.add("수");
+        day7.add("목");
+        day7.add("금");
+        day7.add("토");
+        day7.add("일");
+
+        for(String day : day7) {
+            if(day.equals(rawDay)) {
+                count++;
+            }
+        }
+
+        if (count == 0 ) {
+            throw new IllegalArgumentException(ErrorMessageType.INVALID_START_DAY_FORMAT.getMessage());
         }
     }
 
