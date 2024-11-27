@@ -17,4 +17,12 @@ public class ServiceValidation {
         }
     }
 
+    public static void checkedNicknameLength(List<String> staffs) {
+        for(String staff : staffs) {
+            if(staff.length() > 5) {
+                throw new IllegalArgumentException(ErrorMessageType.INVALID_NICKNAME_LENGTH_ERROR.getMessage());
+            }
+        }
+    }
+
 }
