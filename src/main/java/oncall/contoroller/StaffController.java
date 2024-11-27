@@ -3,6 +3,7 @@ package oncall.contoroller;
 import camp.nextstep.edu.missionutils.Console;
 import oncall.utils.ServiceValidation;
 import oncall.utils.Splitter;
+import oncall.view.InputView;
 
 public class StaffController {
 
@@ -11,15 +12,13 @@ public class StaffController {
     }
 
     private void inputStartMonthAndDay() {
-        String rawMonthAndDay = Console.readLine();
+        String rawMonthAndDay = InputView.inputMessageMonthAndDay();
         String[] splitRawMonthAndDay = Splitter.splitCommaDelimiter(rawMonthAndDay);
 
         int startMonth = ServiceValidation.checkedStartMonth(splitRawMonthAndDay[0].trim()); // ex) 12
         ServiceValidation.checkedStartDay(splitRawMonthAndDay[1].trim());
         String startDay = splitRawMonthAndDay[1].trim(); // ex) 월
 
-        System.out.println(startMonth);
-        System.out.println(startDay);
     }
 
 }
