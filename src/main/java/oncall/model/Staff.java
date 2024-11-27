@@ -38,5 +38,13 @@ public class Staff {
         holidayStaffs.addAll(inputHolidayStaffs);
     }
 
+    public List<String> getWeekdayStaffs() {
+        return weekdayStaffs;
+    }
+
+    public List<String> getHolidayStaffs() {
+        return holidayStaffs;
+    }
+
 
 }

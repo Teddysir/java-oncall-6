@@ -30,6 +30,9 @@ public class StaffController {
     private void employStaffs() {
         employWeekdayStaffs();
         employHolidayStaffs();
+        System.out.println(staff.getHolidayStaffs());
+        System.out.println(staff.getWeekdayStaffs());
+        ServiceValidation.checkedUnEmployedStaff(staff.getWeekdayStaffs(), staff.getHolidayStaffs());
     }
 
     private void employWeekdayStaffs() {
