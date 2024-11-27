@@ -14,7 +14,9 @@ public class StaffController {
     public void start() {
         startMonthAndDay();
         employStaffs();
+        printCalendar();
     }
+
 
     private void startMonthAndDay() {
         String rawMonthAndDay = InputView.inputMessageMonthAndDay();
@@ -26,6 +28,9 @@ public class StaffController {
         int startMonth = ServiceValidation.checkedStartMonth(splitRawMonthAndDay[0].trim()); // ex) 12
         ServiceValidation.checkedStartDay(splitRawMonthAndDay[1].trim());
         String startDay = splitRawMonthAndDay[1].trim(); // ex) 월
+
+        calendar.setStartMonth(startMonth);
+        calendar.setStartDay(startDay);
 
     }
 
@@ -43,6 +48,19 @@ public class StaffController {
     private void employHolidayStaffs() {
         String rawHolidayStaffs = InputView.inputMessageHolidayStaffs();
         staff.addedHolidayStaffs(rawHolidayStaffs);
+    }
+
+    private void printCalendar() {
+        System.out.println();
+        if(calendar.getStartMonth() == 4 || calendar.getStartMonth() == 6 || calendar.getStartMonth() == 9 || calendar.getStartMonth() == 11) {
+            calendar.print30Calendar(calendar.getStartMonth(), calendar.getStartDay(), staff.getWeekdayStaffs());
+            return;
+        }
+        if(calendar.getStartMonth() == 2 ){
+            calendar.print28Calendar(calendar.getStartMonth(), calendar.getStartDay(), staff.getWeekdayStaffs());
+            return;
+        }
+        calendar.print31Calendar(calendar.getStartMonth(), calendar.getStartDay(), staff.getWeekdayStaffs());
     }
 
 }
