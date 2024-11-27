@@ -4,6 +4,7 @@ import oncall.utils.ServiceValidation;
 import oncall.utils.Splitter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Staff {
@@ -39,11 +40,11 @@ public class Staff {
     }
 
     public List<String> getWeekdayStaffs() {
-        return weekdayStaffs;
+        return Collections.unmodifiableList(new ArrayList<>(weekdayStaffs));
     }
 
     public List<String> getHolidayStaffs() {
-        return holidayStaffs;
+        return Collections.unmodifiableList(new ArrayList<>(holidayStaffs));
     }
 
 
