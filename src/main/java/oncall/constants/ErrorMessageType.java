@@ -3,7 +3,8 @@ package oncall.constants;
 public enum ErrorMessageType {
 
     DUPLICATE_NICKNAME_ERROR("[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요."),
-    INVALID_NICKNAME_LENGTH_ERROR("[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
+    INVALID_NICKNAME_LENGTH_ERROR("[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요."),
+    MINIMUM_STAFFS_ERROR("[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
 
     private final String message;
 

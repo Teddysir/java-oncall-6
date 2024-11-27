@@ -25,4 +25,10 @@ public class ServiceValidation {
         }
     }
 
+    public static void checkedMinimumStaffs(List<String> staffs) {
+        if(staffs.size() < 5) {
+            throw new IllegalArgumentException(ErrorMessageType.MINIMUM_STAFFS_ERROR.getMessage());
+        }
+    }
+
 }
