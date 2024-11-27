@@ -31,4 +31,10 @@ public class ServiceValidation {
         }
     }
 
+    public static void checkedMaximumStaffs(List<String> staffs) {
+        if(staffs.size() > 35) {
+            throw new IllegalArgumentException(ErrorMessageType.MAXIMUM_STAFFS_ERROR.getMessage());
+        }
+    }
+
 }
