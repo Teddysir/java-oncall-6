@@ -37,4 +37,10 @@ public class ServiceValidation {
         }
     }
 
+    public static void checkedRawInput(String rawInput) {
+        if(rawInput.contains(",,")) {
+            throw new IllegalArgumentException(ErrorMessageType.INVALID_STAFF_INPUT_ERROR.getMessage());
+        }
+    }
+
 }
