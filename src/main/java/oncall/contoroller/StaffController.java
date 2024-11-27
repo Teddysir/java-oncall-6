@@ -1,5 +1,6 @@
 package oncall.contoroller;
 
+import oncall.model.Calendar;
 import oncall.model.Staff;
 import oncall.utils.ServiceValidation;
 import oncall.utils.Splitter;
@@ -8,6 +9,7 @@ import oncall.view.InputView;
 public class StaffController {
 
     final Staff staff = new Staff();
+    final Calendar calendar = new Calendar();
 
     public void start() {
         startMonthAndDay();
@@ -30,8 +32,6 @@ public class StaffController {
     private void employStaffs() {
         employWeekdayStaffs();
         employHolidayStaffs();
-        System.out.println(staff.getHolidayStaffs());
-        System.out.println(staff.getWeekdayStaffs());
         ServiceValidation.checkedUnEmployedStaff(staff.getWeekdayStaffs(), staff.getHolidayStaffs());
     }
 
