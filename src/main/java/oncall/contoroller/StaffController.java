@@ -1,17 +1,17 @@
 package oncall.contoroller;
 
+import oncall.model.Staff;
 import oncall.utils.ServiceValidation;
 import oncall.utils.Splitter;
 import oncall.view.InputView;
 
-import java.util.List;
-
 public class StaffController {
+
+    final Staff staff = new Staff();
 
     public void start() {
         startMonthAndDay();
-        employWeekdayStaffs();
-        employHolidayStaffs();
+        employStaffs();
     }
 
     private void startMonthAndDay() {
@@ -27,30 +27,19 @@ public class StaffController {
 
     }
 
+    private void employStaffs() {
+        employWeekdayStaffs();
+        employHolidayStaffs();
+    }
+
     private void employWeekdayStaffs() {
         String rawWeekdayStaffs = InputView.inputMessageWeekdayStaffs();
-
-        ServiceValidation.checkedRawInput(rawWeekdayStaffs);
-
-        List<String> weekdayStaffs = Splitter.getSplitStaffsComma(rawWeekdayStaffs.trim()); // ex) [성훈, 수아, 동균, 효성]
-
-        ServiceValidation.checkedDuplicateNickname(rawWeekdayStaffs, weekdayStaffs);
-        ServiceValidation.checkedNicknameLength(weekdayStaffs);
-        ServiceValidation.checkedMinimumStaffs(weekdayStaffs);
-        ServiceValidation.checkedMaximumStaffs(weekdayStaffs);
+        staff.addedWeekdayStaffs(rawWeekdayStaffs);
     }
 
     private void employHolidayStaffs() {
         String rawHolidayStaffs = InputView.inputMessageHolidayStaffs();
-
-        ServiceValidation.checkedRawInput(rawHolidayStaffs);
-
-        List<String> holidayStaffs = Splitter.getSplitStaffsComma(rawHolidayStaffs.trim());
-
-        ServiceValidation.checkedDuplicateNickname(rawHolidayStaffs, holidayStaffs);
-        ServiceValidation.checkedNicknameLength(holidayStaffs);
-        ServiceValidation.checkedMinimumStaffs(holidayStaffs);
-        ServiceValidation.checkedMaximumStaffs(holidayStaffs);
+        staff.addedHolidayStaffs(rawHolidayStaffs);
     }
 
 }
