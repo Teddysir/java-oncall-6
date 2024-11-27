@@ -51,6 +51,10 @@ public class StaffController {
     }
 
     private void printCalendar() {
+
+        calendar.setCalendarEnum();
+        calendar.setCalendarIntegerEnum();
+
         System.out.println();
         if(calendar.getStartMonth() == 4 || calendar.getStartMonth() == 6 || calendar.getStartMonth() == 9 || calendar.getStartMonth() == 11) {
             calendar.print30Calendar(calendar.getStartMonth(), calendar.getStartDay(), staff.getWeekdayStaffs());
