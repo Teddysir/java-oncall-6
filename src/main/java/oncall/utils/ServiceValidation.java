@@ -37,13 +37,17 @@ public class ServiceValidation {
 
     public static void checkedRawInput(String rawInput) {
         if(rawInput.contains(",,")) {
-            throw new IllegalArgumentException(ErrorMessageType.INVALID_STAFF_INPUT_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessageType.INVALID_INPUT_ERROR.getMessage());
         }
     }
 
     public static int checkedStartMonth(String rawMonth) {
         try {
-            return Integer.parseInt(rawMonth);
+            int startMonth = Integer.parseInt(rawMonth);
+            if(startMonth < 1 || startMonth > 12) {
+                throw new IllegalArgumentException(ErrorMessageType.INVALID_START_MONTH_FORMAT.getMessage());
+            }
+            return startMonth;
         } catch (IllegalFormatException e) {
             throw new IllegalArgumentException(ErrorMessageType.INVALID_START_MONTH_FORMAT.getMessage());
         }
