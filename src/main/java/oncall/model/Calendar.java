@@ -19,6 +19,7 @@ public class Calendar {
     public void print30Calendar(int month, String day, List<String> staffs) {
         int strDayCount = calendarEnum.get(day); // 예를들어 월이면 1이겠지?
         for (int numDay = 1; numDay <= 30; numDay++) {
+
             if (numDay % staffs.size() == 0) { // 1 2 3 4 0  / 5
                 OutputView.calendar30Message(month, numDay, this.calendarIntegerEnum.get(strDayCount % 7), staffs.get(staffs.size()-1));
                 strDayCount++;
